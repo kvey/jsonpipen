@@ -1,0 +1,32 @@
+{
+  "name": "jsonInterface",
+  "preferGlobal": "true",
+  "description": "CLI for viewing JSON data as well as providing an easy to maniuplate output format.",
+  "version": "0.0.1",
+  "author": "Colton Pierson <colton@coltonpierson.com>",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/kvey/json-nodeCli.git"
+  },
+  "keywords": [
+    "cli",
+    "json",
+    "sysadmin",
+    "tools"
+  ],
+  "dependencies": {
+    "commander": "0.5.x"
+  },
+  "devDependencies": {
+    "request": "2.x.x",
+    "vows": "0.5.x"
+  },
+  "bin": {
+    "json": "./bin/json",
+  },
+  "main": "./lib/json",
+  "engines": {
+    "node": ">= 0.4.8"
+  }
+}
+
