@@ -14,7 +14,7 @@ result.
 
 The -r flag can be used to output in an easy to grep format.
 
-## Examples
+# Examples
 
 Using the following JSON file:
 
@@ -30,18 +30,8 @@ Using the following JSON file:
         "updated":"2010-01-07T13:26:50.000Z",
         "uploader":"GoogleDeveloperDay",
         "category":"News",
-        "title":"Google
-          Developers
-          Day
-          US
-          - Maps
-          API
-          Introduction",
-        "description":"Google
-          Maps
-          API
-          Introduction
-          ...",
+        "title":"Google Developers Day US - Maps API Introduction",
+        "description":"Google Maps API Introduction...",
         "tags":[
           "GDD07","GDD07US","Maps"
           ],
