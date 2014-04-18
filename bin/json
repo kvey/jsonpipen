@@ -70,12 +70,13 @@ process.stdin.on('end', function(){
     (function recurRead(obj, path){
       if(typeof obj == 'string'){
         lines.push(obj + '\n');
-      }
-      else{
+      }else if(typeof obj == 'number' || typeof obj == 'boolean' || obj === null){
+        lines.push(JSON.stringify(obj) + '\n');
+      }else{
         for(var k in obj){
           var sectionPath = path;
           if(obj.hasOwnProperty(k)){
-            if(typeof obj[k] == 'object'){
+            if(typeof obj[k] == 'object' && typeof obj[k] !== null){
               if(Array.isArray(obj[k])){
                 sectionPath += k+"/";
                 lines.push(sectionPath + tnl("[]"));

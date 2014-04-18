@@ -18,9 +18,30 @@ var run = function(command, cb) {
 
 describe('jsonpipen', function() {
 
-  it('should select a simple value from json', function(done) {
+  it('should select a string', function(done) {
   	run(format('cat {} | {} data.items[0].accessControl.embed', testFile, bin), function(err, output) {
   		output.should.equal('"allowed"');
+  		done(err);
+  	});
+  });
+
+  it('should select a number', function(done) {
+  	run(format('cat {} | {} data.totalItems', testFile, bin), function(err, output) {
+  		output.should.equal('800');
+  		done(err);
+  	});
+  });
+
+  it('should select a boolean', function(done) {
+  	run(format('cat {} | {} data.testBool', testFile, bin), function(err, output) {
+  		output.should.equal('true');
+  		done(err);
+  	});
+  });
+
+  it('should select null', function(done) {
+  	run(format('cat {} | {} data.testNull', testFile, bin), function(err, output) {
+  		output.should.equal('null');
   		done(err);
   	});
   });
@@ -40,9 +61,31 @@ describe('jsonpipen', function() {
   	});
   });
 
-  it('should select a simple value from json and output without quotes with -r option', function(done) {
+  // -r
+  it('should select a string and output without quotes with -r option', function(done) {
   	run(format('cat {} | {} -r data.items[0].accessControl.embed', testFile, bin), function(err, output) {
   		output.should.equal('allowed\n');
+  		done(err);
+  	});
+  });
+
+  it('should select a number with -r option', function(done) {
+  	run(format('cat {} | {} -r data.totalItems', testFile, bin), function(err, output) {
+  		output.should.equal('800\n');
+  		done(err);
+  	});
+  });
+
+  it('should select a boolean with -r option', function(done) {
+  	run(format('cat {} | {} -r data.testBool', testFile, bin), function(err, output) {
+  		output.should.equal('true\n');
+  		done(err);
+  	});
+  });
+
+  it('should select null with -r option', function(done) {
+  	run(format('cat {} | {} -r data.testNull', testFile, bin), function(err, output) {
+  		output.should.equal('null\n');
   		done(err);
   	});
   });
