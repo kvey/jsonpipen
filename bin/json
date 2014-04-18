@@ -6,13 +6,14 @@ JSON Inferface
 
 =========================*/
 
-var com = require('commander');
+var com = require('commander'),
+    pkg = require('../package.json');
 
 //=========================
 // Initialize
 
 com
-  .version('0.0.1')
+  .version(pkg.version)
   .option('-r, --read', 'Output as line by line representation for use with grep and other line tools')
   .parse(process.argv);
 
