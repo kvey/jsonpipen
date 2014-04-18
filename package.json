@@ -1,18 +1,20 @@
 {
-  "name": "jsonInterface",
+  "name": "jsonpipen",
   "preferGlobal": "true",
-  "description": "CLI for viewing JSON data as well as providing an easy to maniuplate output format.",
-  "version": "0.0.1",
+  "description": "Command-line tool for selecting and returning line operable formatted JSON",
+  "version": "0.1.0",
   "author": "Colton Pierson <colton@coltonpierson.com>",
   "repository": {
     "type": "git",
-    "url": "http://github.com/kvey/json-nodeCli.git"
+    "url": "http://github.com/kvey/jsonpipen.git"
   },
   "keywords": [
     "cli",
     "json",
     "sysadmin",
-    "tools"
+    "tools",
+    "json select",
+    "json path"
   ],
   "dependencies": {
     "commander": "0.5.x"
@@ -22,11 +24,10 @@
     "vows": "0.5.x"
   },
   "bin": {
-    "json": "./bin/json",
+    "json": "./bin/json"
   },
   "main": "./lib/json",
   "engines": {
     "node": ">= 0.4.8"
   }
 }
-
