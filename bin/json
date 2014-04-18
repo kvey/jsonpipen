@@ -48,7 +48,8 @@ process.stdin.on('end', function(){
   try{
     var parsed = JSON.parse(data);
   }catch(err){
-    console.log("Malformed JSON");
+    console.error("Malformed JSON");
+    process.exit(1);
   }
 
   var final;
@@ -57,7 +58,8 @@ process.stdin.on('end', function(){
       var selector = new Function( "object", "return object." + com.args[0]);
       final = selector(parsed);
     }catch(err){
-      console.log("Incorrectly formatted address");
+      console.error("Incorrectly formatted address");
+      process.exit(1);
     }
   }else{
     final = parsed;
