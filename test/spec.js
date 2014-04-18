@@ -17,8 +17,15 @@ var run = function(command, cb) {
 };
 
 describe('jsonpipen', function() {
-  it('should select a subsection of json', function(done) {
 
+  it('should select a simple value from json', function(done) {
+  	run(format('cat {} | {} data.items[0].accessControl.embed', testFile, bin), function(err, output) {
+  		output.should.equal('"allowed"');
+  		done(err);
+  	});
+  });
+
+  it('should select a subsection of json', function(done) {
   	run(format('cat {} | {} data.items[0].accessControl', testFile, bin), function(err, output) {
   		JSON.parse(output).should.deep.equal({
 			  "syndicate": "allowed",
@@ -33,8 +40,14 @@ describe('jsonpipen', function() {
   	});
   });
 
-  it('should output "grepable" format with -r option', function(done) {
+  it('should select a simple value from json and output without quotes with -r option', function(done) {
+  	run(format('cat {} | {} -r data.items[0].accessControl.embed', testFile, bin), function(err, output) {
+  		output.should.equal('allowed');
+  		done(err);
+  	});
+  });
 
+  it('should output "grepable" format with -r option', function(done) {
   	run(format('cat {} | {} -r data.items[0].accessControl', testFile, bin), function(err, output) {
   		output.should.deep.equal([
 				'/syndicate/	allowed',
@@ -47,10 +60,5 @@ describe('jsonpipen', function() {
 				].join('\n'));
   		done(err);
   	});
-
-		// foo.should.be.a('string');
-		// foo.should.equal('bar');
-		// foo.should.have.length(3);
-		// beverages.should.have.property('tea').with.length(3);   
   });
 });
