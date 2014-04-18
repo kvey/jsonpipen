@@ -42,7 +42,7 @@ describe('jsonpipen', function() {
 
   it('should select a simple value from json and output without quotes with -r option', function(done) {
   	run(format('cat {} | {} -r data.items[0].accessControl.embed', testFile, bin), function(err, output) {
-  		output.should.equal('allowed');
+  		output.should.equal('allowed\n');
   		done(err);
   	});
   });
@@ -56,7 +56,8 @@ describe('jsonpipen', function() {
 				'/list/	allowed',
 				'/comment/	allowed',
 				'/embed/	allowed',
-				'/videoRespond/	moderated'
+				'/videoRespond/	moderated',
+				''
 				].join('\n'));
   		done(err);
   	});
