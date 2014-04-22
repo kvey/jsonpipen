@@ -1,5 +1,7 @@
 {"apiVersion":"2.0",
   "data":{
+    "testNull": null,
+    "testBool": true,
     "updated":"2010-01-07T19:58:42.949Z",
     "totalItems":800,
     "startIndex":1,
